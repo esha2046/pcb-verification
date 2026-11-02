@@ -78,21 +78,24 @@ class YoloDetector:
         return out
 
 
-def find_extras(aligned, ref, components, thresh=55, min_area=450, pad=6, border=45):
-    """Foreign / extra objects: difference blobs lying outside every expected ROI.
+def find_extras(aligned, ref, components, thresh=30, min_area_frac=0.00035, mask_frac=0.25, pad=6, border=20):
+    """Foreign / extra objects: colour-difference blobs lying outside every expected ROI.
+    All size limits scale with image area, so they work at any resolution (was: fixed 450 px^2 tuned for 1280 px).
     Gain-compensated (lighting) and border-masked (warp artefacts)."""
-    a = cv2.cvtColor(aligned, cv2.COLOR_BGR2GRAY).astype(np.float32)
-    r = cv2.cvtColor(ref, cv2.COLOR_BGR2GRAY).astype(np.float32)
+    H, W = ref.shape[:2]
+    min_area = max(60, int(min_area_frac * W * H))
+    a = aligned.astype(np.float32); r = ref.astype(np.float32)
     a *= (r.mean() / max(a.mean(), 1e-6))
-    d = np.abs(cv2.GaussianBlur(a, (5, 5), 0) - cv2.GaussianBlur(r, (5, 5), 0)).astype(np.uint8)
+    # max over B,G,R channels (not grayscale): a dark part on a mid-tone board or pads can have ~equal gray level
+    d = np.abs(cv2.GaussianBlur(a, (5, 5), 0) - cv2.GaussianBlur(r, (5, 5), 0)).max(axis=2).astype(np.uint8)
     _, m = cv2.threshold(d, thresh, 255, cv2.THRESH_BINARY)
     m[:border], m[-border:], m[:, :border], m[:, -border:] = 0, 0, 0, 0
-    for c in components:  # mask expected zones (+search margin) so moved parts are not "extra"
+    for c in components:  # mask expected zones (+small search margin) so slightly moved parts are not "extra"
         x, y, w, h = c["roi"]
-        mx, my = int(w * 0.6) + pad, int(h * 0.6) + pad
+        mx, my = int(w * mask_frac) + pad, int(h * mask_frac) + pad
         m[max(0, y - my):y + h + my, max(0, x - mx):x + w + mx] = 0
-    m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
-    m = cv2.morphologyEx(m, cv2.MORPH_CLOSE, np.ones((9, 9), np.uint8))
+    m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+    m = cv2.morphologyEx(m, cv2.MORPH_CLOSE, np.ones((7, 7), np.uint8))
     n, _, stats, _ = cv2.connectedComponentsWithStats(m)
     return [tuple(int(v) for v in stats[i][:4]) for i in range(1, n) if stats[i][4] >= min_area]
 
