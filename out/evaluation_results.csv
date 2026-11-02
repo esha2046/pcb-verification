@@ -1,0 +1,17 @@
+,detector_only,detector+verification
+missing_P,1.0,1.0
+missing_R,1.0,1.0
+missing_F1,1.0,1.0
+misplaced_P,1.0,1.0
+misplaced_R,0.0,1.0
+misplaced_F1,0.0,1.0
+extra_P,1.0,1.0
+extra_R,0.0,1.0
+extra_F1,0.0,1.0
+false_accept_%,25.0,0.0
+false_reject_%,0.0,0.0
+board_accuracy_%,81.66666666666667,100.0
+latency_ms,943.9549999999999,854.6016666666667
+FPS,1.0593725336483202,1.1701357942589237
+boards,60,60
+good/defective,16/44,16/44

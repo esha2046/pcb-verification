@@ -1,0 +1,211 @@
+{
+  "width": 1280,
+  "board": "DEMO-PCB-01",
+  "thresholds": {
+    "conf": 0.75,
+    "iou": 0.5,
+    "delta": 0.02
+  },
+  "components": [
+    {
+      "name": "IC1",
+      "cls": "ic",
+      "roi": [
+        150,
+        110,
+        140,
+        100
+      ]
+    },
+    {
+      "name": "IC2",
+      "cls": "ic",
+      "roi": [
+        560,
+        130,
+        120,
+        90
+      ]
+    },
+    {
+      "name": "RES3",
+      "cls": "resistor",
+      "roi": [
+        100,
+        380,
+        60,
+        26
+      ]
+    },
+    {
+      "name": "RES4",
+      "cls": "resistor",
+      "roi": [
+        190,
+        380,
+        60,
+        26
+      ]
+    },
+    {
+      "name": "RES5",
+      "cls": "resistor",
+      "roi": [
+        280,
+        380,
+        60,
+        26
+      ]
+    },
+    {
+      "name": "RES6",
+      "cls": "resistor",
+      "roi": [
+        370,
+        380,
+        60,
+        26
+      ]
+    },
+    {
+      "name": "RES7",
+      "cls": "resistor",
+      "roi": [
+        460,
+        380,
+        60,
+        26
+      ]
+    },
+    {
+      "name": "RES8",
+      "cls": "resistor",
+      "roi": [
+        550,
+        380,
+        60,
+        26
+      ]
+    },
+    {
+      "name": "CAP9",
+      "cls": "capacitor",
+      "roi": [
+        140,
+        520,
+        50,
+        50
+      ]
+    },
+    {
+      "name": "CAP10",
+      "cls": "capacitor",
+      "roi": [
+        250,
+        520,
+        50,
+        50
+      ]
+    },
+    {
+      "name": "CAP11",
+      "cls": "capacitor",
+      "roi": [
+        360,
+        520,
+        50,
+        50
+      ]
+    },
+    {
+      "name": "CAP12",
+      "cls": "capacitor",
+      "roi": [
+        470,
+        520,
+        50,
+        50
+      ]
+    },
+    {
+      "name": "CAP13",
+      "cls": "capacitor",
+      "roi": [
+        580,
+        520,
+        50,
+        50
+      ]
+    },
+    {
+      "name": "LED14",
+      "cls": "led",
+      "roi": [
+        900,
+        180,
+        34,
+        34
+      ]
+    },
+    {
+      "name": "LED15",
+      "cls": "led",
+      "roi": [
+        960,
+        180,
+        34,
+        34
+      ]
+    },
+    {
+      "name": "LED16",
+      "cls": "led",
+      "roi": [
+        1020,
+        180,
+        34,
+        34
+      ]
+    },
+    {
+      "name": "CON17",
+      "cls": "connector",
+      "roi": [
+        880,
+        640,
+        230,
+        70
+      ]
+    },
+    {
+      "name": "RES18",
+      "cls": "resistor",
+      "roi": [
+        700,
+        400,
+        60,
+        26
+      ]
+    },
+    {
+      "name": "RES19",
+      "cls": "resistor",
+      "roi": [
+        780,
+        400,
+        60,
+        26
+      ]
+    },
+    {
+      "name": "RES20",
+      "cls": "resistor",
+      "roi": [
+        860,
+        400,
+        60,
+        26
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+board,status,score_%,missing,misplaced,latency_ms,flagged
+missing_1,FAIL,35.0,7,6,2830.7,IC1:misplaced BRIDGE1:missing R32:missing R24:misplaced C1:misplaced R4:misplaced C7:missing C6:misplaced R2:misplaced IC2:missing R13:missing R23:missing R27:missing
+missing_2,FAIL,65.0,4,3,261.7,R32:missing R1:misplaced R4:misplaced C7:missing C6:misplaced IC2:missing R23:missing
+missing_3,FAIL,90.0,1,1,257.0,C7:missing C6:misplaced
+missing_lots_1,FAIL,35.0,7,6,251.8,IC1:missing BRIDGE1:missing U9:misplaced R32:missing C7:missing C6:misplaced Q1:misplaced IC2:missing R13:misplaced D2:misplaced T5:misplaced R23:missing R27:missing
+missing_lots_2,FAIL,20.0,6,10,258.3,IC1:missing U9:misplaced R32:missing R1:misplaced R24:missing C9:misplaced C1:misplaced R4:misplaced C7:misplaced C6:misplaced R2:misplaced R6:misplaced IC2:missing T5:misplaced R23:missing R27:missing
+missing_lots_3,FAIL,60.0,5,3,263.1,IC1:missing U9:misplaced R32:missing R4:misplaced C7:missing C6:misplaced R13:missing R23:missing
+mostly_ok_1,PASS,100.0,0,0,286.5,
+mostly_ok_2,PASS,100.0,0,0,271.4,

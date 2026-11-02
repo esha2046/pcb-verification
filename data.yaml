@@ -1,0 +1,10 @@
+path: C:\Users\Esha Sharma\Desktop\pcb_verify\datasets\pcb
+train: images/train
+val: images/val
+names:
+  0: resistor
+  1: capacitor
+  2: ic
+  3: led
+  4: connector
+  5: foreign

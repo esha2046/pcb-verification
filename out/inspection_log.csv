@@ -1,0 +1,3 @@
+timestamp,source,expected,correct,missing,misplaced,extra,score,status,align_inliers,latency_ms
+2026-11-02 15:31:16,missing_1.png,20,0,20,0,0,0.0,FAIL,5,5145.1
+2026-11-02 15:31:22,missing_1.png,20,0,19,1,0,0.0,FAIL,302,1542.1

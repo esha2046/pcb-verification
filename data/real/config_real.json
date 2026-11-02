@@ -1,0 +1,215 @@
+{
+ "width": 760,
+ "board": "EB8.5_POWER_V5.0 (real photos)",
+ "detect_extras": false,
+ "thresholds": {
+  "conf": 0.45,
+  "iou": 0.4,
+  "delta": 0.03
+ },
+ "components": [
+  {
+   "name": "IC1",
+   "cls": "ic",
+   "roi": [
+    220,
+    224,
+    110,
+    114
+   ]
+  },
+  {
+   "name": "BRIDGE1",
+   "cls": "diode_bridge",
+   "roi": [
+    488,
+    150,
+    108,
+    88
+   ]
+  },
+  {
+   "name": "U9",
+   "cls": "regulator",
+   "roi": [
+    630,
+    124,
+    58,
+    142
+   ]
+  },
+  {
+   "name": "R32",
+   "cls": "resistor",
+   "roi": [
+    104,
+    300,
+    60,
+    32
+   ]
+  },
+  {
+   "name": "R1",
+   "cls": "resistor",
+   "roi": [
+    92,
+    370,
+    30,
+    48
+   ]
+  },
+  {
+   "name": "R24",
+   "cls": "resistor",
+   "roi": [
+    340,
+    308,
+    30,
+    56
+   ]
+  },
+  {
+   "name": "C9",
+   "cls": "capacitor",
+   "roi": [
+    372,
+    314,
+    30,
+    54
+   ]
+  },
+  {
+   "name": "C1",
+   "cls": "capacitor",
+   "roi": [
+    422,
+    292,
+    32,
+    50
+   ]
+  },
+  {
+   "name": "R4",
+   "cls": "resistor",
+   "roi": [
+    458,
+    290,
+    30,
+    46
+   ]
+  },
+  {
+   "name": "C7",
+   "cls": "capacitor",
+   "roi": [
+    240,
+    434,
+    62,
+    36
+   ]
+  },
+  {
+   "name": "C6",
+   "cls": "capacitor",
+   "roi": [
+    254,
+    502,
+    56,
+    34
+   ]
+  },
+  {
+   "name": "Q1",
+   "cls": "transistor",
+   "roi": [
+    214,
+    566,
+    64,
+    58
+   ]
+  },
+  {
+   "name": "R2",
+   "cls": "resistor",
+   "roi": [
+    302,
+    582,
+    34,
+    46
+   ]
+  },
+  {
+   "name": "R6",
+   "cls": "resistor",
+   "roi": [
+    278,
+    682,
+    34,
+    50
+   ]
+  },
+  {
+   "name": "IC2",
+   "cls": "ic",
+   "roi": [
+    136,
+    736,
+    66,
+    54
+   ]
+  },
+  {
+   "name": "R13",
+   "cls": "resistor",
+   "roi": [
+    158,
+    808,
+    52,
+    30
+   ]
+  },
+  {
+   "name": "D2",
+   "cls": "diode",
+   "roi": [
+    240,
+    774,
+    82,
+    42
+   ]
+  },
+  {
+   "name": "T5",
+   "cls": "transistor",
+   "roi": [
+    340,
+    788,
+    62,
+    50
+   ]
+  },
+  {
+   "name": "R23",
+   "cls": "resistor",
+   "roi": [
+    454,
+    798,
+    56,
+    32
+   ]
+  },
+  {
+   "name": "R27",
+   "cls": "resistor",
+   "roi": [
+    594,
+    608,
+    78,
+    54
+   ]
+  }
+ ],
+ "photometric_norm": true,
+ "refine_conf": 0.4,
+ "match_blur": 0.0
+}
