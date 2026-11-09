@@ -3,6 +3,8 @@ import json, cv2, numpy as np, pandas as pd, streamlit as st
 from pcbverify import inspect_board
 from pcbverify.logger import log_result
 from pcbverify.viz import keypoint_matches, diff_map
+from pcbverify.report import make_report, make_video_report
+import time
 
 st.set_page_config(page_title="PCB Assembly Verification", layout="wide")
 st.title("Vision-Based Assembly Verification & Missing Component Detection")
@@ -27,6 +29,11 @@ if use_demo or not (ref_f and cfg_f):
 else:
     ref = cv2.imdecode(np.frombuffer(ref_f.read(), np.uint8), 1); cfg = json.load(cfg_f)
 cfg["thresholds"] = {"conf": t_conf, "iou": t_iou, "delta": t_delta}
+def report_meta(source):
+    return {"Board": cfg.get("board", "-"), "Source": source,
+            "Detector": "YOLOv8 (" + str(weights) + ")" if weights else "Template matching (1 golden reference)",
+            "Thresholds": f"presence {t_conf} | IoU {t_iou} | offset {t_delta}",
+            "Date": time.strftime("%Y-%m-%d %H:%M")}
 detector = None
 if weights:
     try:
@@ -56,6 +63,7 @@ if mode == "Video":
         b.subheader("Score over time"); b.line_chart(pd.DataFrame(v["timeline"]).set_index("t")["score"])
         st.subheader("Per-component verdict (temporal vote)")
         st.dataframe(pd.DataFrame(v["final"]), use_container_width=True)
+        st.download_button("Download PDF report", make_video_report(v, report_meta(vf.name)), "video_inspection_report.pdf", "application/pdf")
     st.stop()
 c1, c2 = st.columns([1, 2])
 with c1:
@@ -94,6 +102,9 @@ if img is not None:
                         "SSIM": None if "ssim" not in r else round(r["ssim"], 2)} for r in res["components"]])
     st.subheader("Per-component explanation")
     st.dataframe(df.style.map(lambda v: {"correct": "background:#d6f5d6", "missing": "background:#f8c9c9", "misplaced": "background:#ffe3b0"}.get(v, ""), subset=["verdict"]), use_container_width=True)
-    st.download_button("Download report (CSV)", df.to_csv(index=False), "inspection_report.csv")
+    d1, d2 = st.columns(2)
+    d1.download_button("Download PDF report", make_report(s, res["components"], res["overlay"], diff_map(res["aligned"], ref),
+                       report_meta(getattr(src, "name", demo))), "inspection_report.pdf", "application/pdf", type="primary")
+    d2.download_button("Download table (CSV)", df.to_csv(index=False), "inspection_report.csv")
 else:
     st.info("Upload / capture a board image or choose a demo board.")
